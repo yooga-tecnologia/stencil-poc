@@ -1,0 +1,11 @@
+node_modules
+storybook-static
+src
+.stencil
+.vscode
+tests
+*.test.*
+*.spec.*
+*.md
+*.log
+*.lock

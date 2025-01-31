@@ -1,0 +1,48 @@
+@use '../../design-tokens' as *;
+
+.my-button {
+  padding: $padding-base;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-text-light;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-text-light;
+
+    &:hover {
+      background-color: $color-secondary-hover;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &--disabled {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:disabled {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
