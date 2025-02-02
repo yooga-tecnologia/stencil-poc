@@ -19,7 +19,7 @@ export class MyButton {
 
   render() {
     return (
-      <button class={this.buttonClass} disabled={this.disabled}>
+      <button class={this.buttonClass} disabled={this.disabled} part="button">
         {this.label}
       </button>
     );
