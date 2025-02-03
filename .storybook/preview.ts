@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/html';
 import { defineCustomElements } from '../loader';
+import '../src/_common-variables.scss'
 
 defineCustomElements();
 

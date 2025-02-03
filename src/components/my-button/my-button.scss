@@ -1,15 +1,4 @@
-@use '../../styles/common-variables' as token;
-
-:host {
-  --color-primary: #{token.$primary-color};
-  --color-secondary: #{token.$secondary-color};
-  --color-disabled: #{token.$disabled-color};
-  --color-text-light: #{token.$text-light};
-  --font-size-default: #{token.$font-size-default};
-  --border-radius: #{token.$border-radius};
-  --padding-base: #{token.$padding};
-  display: inline-block;
-}
+@use '../../common-variables' as *;
 
 button {
   display: inline-flex;
@@ -30,7 +19,7 @@ button {
   color: var(--color-text-light);
 
   &:hover {
-    background-color: darken(token.$primary-color, 10%);
+    background-color: var(--color-primary-hover);
   }
 }
 
@@ -39,7 +28,7 @@ button {
   color: var(--color-text-light);
 
   &:hover {
-    background-color: darken(token.$secondary-color, 10%);
+    background-color: var(--color-secondary-hover);
   }
 }
 

@@ -7,6 +7,14 @@ const config: StorybookConfig = {
     name: '@storybook/html-webpack5',
     options: {},
   },
-  docs: {}
+  docs: {},
+  webpackFinal: async (config) => {
+    config.module?.rules?.push({
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+    });
+
+    return config;
+  },
 };
 export default config;
