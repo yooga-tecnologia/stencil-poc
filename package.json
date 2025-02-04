@@ -1,21 +1,22 @@
 {
   "name": "@biancardii/study",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/study/study.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/study/study.esm.js",
-      "require": "./dist/study/study.cjs.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/components.d.ts"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+      "types": "./dist/types/components/my-component.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
@@ -23,6 +24,7 @@
       "types": "./loader/index.d.ts"
     }
   },
+  "style": "dist/study/study.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
@@ -34,16 +36,18 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
+    "test": "stencil test --spec --coverage",
+    "test.watch": "stencil test --spec  --watchAll",
+    "test:e2e": "stencil test --spec --e2e",
+    "test.watch:e2e": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
-    "@stencil/core": "^4.7.0",
     "@stencil/sass": "^3.0.12",
+    "@stencil/core": "^4.25.1",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/addon-interactions": "^8.5.2",
     "@storybook/addon-webpack5-compiler-swc": "^2.0.0",

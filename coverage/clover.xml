@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1738672782398" clover="3.2.0">
+  <project timestamp="1738672782398" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6" elements="31" coveredelements="31" complexity="0" loc="17" ncloc="17" packages="3" files="3" classes="3"/>
+    <package name="components.my-button">
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="my-button.tsx" path="/home/biancardi/yooga/stencil-poc/src/components/my-button/my-button.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.my-component">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="my-component.tsx" path="/home/biancardi/yooga/stencil-poc/src/components/my-component/my-component.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+      <file name="utils.ts" path="/home/biancardi/yooga/stencil-poc/src/utils/utils.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="6" type="cond" truecount="6" falsecount="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>
