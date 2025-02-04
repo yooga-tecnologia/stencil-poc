@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "./core/theme.scss" as theme;
+
+$border-radius: ();
+$border-width: ();
+
+$stroke: (
+  container: #FFF,
+  actions: (
+    default: theme.get-tone-from-palette(300, "neutral"),
+    hover: theme.get-tone-from-palette(400, "neutral"),
+    pressed: theme.get-tone-from-palette(500, "neutral"),
+    disabled: theme.get-tone-from-palette(200, "neutral"),
+    selected: theme.get-tone-from-palette(600, "primary"),
+  ),
+  input: (
+    disabled: theme.get-tone-from-palette(100, "neutral"),
+    default: theme.get-tone-from-palette(200, "neutral"),
+    hover: theme.get-tone-from-palette(400, "neutral"),
+    focused: theme.get-tone-from-palette(600, "primary"),
+    error: theme.get-tone-from-palette(600, "critical"),
+    success: theme.get-tone-from-palette(600, "success"),
+  )
+);

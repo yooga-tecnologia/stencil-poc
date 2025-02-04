@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+@use './primitives';
+
+$base-grid: primitives.$base-grid;
+$scale: primitives.$scale;
+
+//
+// 1. Borders
+//
+
+$border-radius: (
+  small:  $base-grid * map.get($scale, "0_25x"),
+  medium: $base-grid * map.get($scale, "1_5x"),
+  large:  $base-grid * map.get($scale, "2_5x"),
+  circular: 400px,
+  circle: 50%,
+);
+
+$border-width: (
+  small: 1px,
+  medium: 2px,
+  none: none,
+);
+
+//
+// 2. Spaces
+//
+
+$spaces: (
+  xxxs: $base-grid * map.get($scale, "1x"),
+  xxs:  $base-grid * map.get($scale, "2x"),
+  xs:   $base-grid * map.get($scale, "3x"),
+  sm:   $base-grid * map.get($scale, "4x"),
+  md:   $base-grid * map.get($scale, "5x"),
+  lg:   $base-grid * map.get($scale, "6x"),
+  xl:   $base-grid * map.get($scale, "7x"),
+  xxl:  $base-grid * map.get($scale, "8x"),
+  xxxl: $base-grid * map.get($scale, "9x"),
+  hg:   $base-grid * map.get($scale, "10x"),
+  xh:   $base-grid * map.get($scale, "12x"),
+  xxh:  $base-grid * map.get($scale, "15x"),
+  xxxh: $base-grid * map.get($scale, "20x"),
+
+  // Generally used for ..?
+  combo:  (
+    xxs:  $base-grid * 0.5,
+    xs:   $base-grid * 1.5,
+    sm:   $base-grid * 2.5,
+    md:   $base-grid * 3.5,
+    lg:   $base-grid * 4.5,
+    xl:   $base-grid * 5.5,
+    xxl:  $base-grid * 6.5,
+  )
+);

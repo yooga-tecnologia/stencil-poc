@@ -1,0 +1,111 @@
+@use "sass:math";
+@use "sass:string";
+
+@use '../tokens/primitives';
+@use './__string-helpers' as string-helper;
+
+$base-grid: primitives.$base-grid;
+
+/// Retrieves the font size for a given typography variant and size.
+///
+/// @param {String} $variant - The typography variant (e.g., 'heading', 'body').
+/// @param {String} [$size='default'] - The size for the variant (e.g., 'large', 'medium', 'small').
+/// @return {Number|null} - The calculated font size in pixels, or null if the variant or size is not found.
+///
+@function get-font-size($variant, $size: 'default') {
+  @if map-has-key(primitives.$typography-variants-list, $variant) {
+    $variant-map: map-get(primitives.$typography-variants-list, $variant);
+    $sizing: map-get($variant-map, 'sizes');
+
+    @if map-has-key($sizing, $size) {
+      $s: ensure-minimum-font-size(map-get($sizing, $size) * primitives.$base-font-size);
+      @return $s;
+    } @else {
+      @return null;
+    }
+  } @else {
+    @warn "Variant `#{$variant}` not found.";
+  }
+
+  @return null;
+}
+
+/// Ensures the font size meets the minimum threshold of 14px.
+///
+/// @param {Number} $value - The calculated font size in pixels.
+/// @return {Number} - The original font size if it's 14px or greater, otherwise returns 14px.
+///
+/// This function checks the given font size and ensures that it is not smaller than 14px.
+/// If the provided font size is less than 14px, it returns 14px instead. This is useful for
+/// preventing text from becoming too small to read comfortably.
+
+@function ensure-minimum-font-size($value) {
+  @if($value < 14) {
+    @return 14px;
+  }
+
+  @return $value;
+}
+
+/// Calculates the line height for a given typography variant and size,
+/// ensuring it is divisible by the base grid size.
+///
+/// @param {String} $variant - The typography variant (e.g., 'heading', 'body').
+/// @param {String} [$size='default'] - The size for the variant (e.g., 'large', 'medium', 'small').
+/// @return {Number|null} - The calculated line height in pixels, or null if the variant or size is not found.
+///
+@function get-line-height($variant, $size: 'default') {
+  $font-size: get-font-size($variant, $size);
+
+  @if $font-size == null {
+    @return null;
+  }
+
+  $line-height: math.floor($font-size * 1);
+
+  @return if(
+    $line-height % $base-grid == 0,
+    $line-height,
+    $line-height + $base-grid - ($line-height % $base-grid)
+  );
+}
+
+@mixin set-font-face($weight) {
+  $w: string-helper.to-pascal-case($weight);
+
+  font-family: primitives.$heading-font-family;
+  font-style: normal;
+  font-weight: map-get(primitives.$typography-weight-map, $weight);
+  font-display: swap;
+  src: url(../assets/Poppins-#{$w}.woff2) format("woff2");
+}
+
+@each $weight, $specs in primitives.$typography-weight-map {
+  @font-face {
+    @include set-font-face($weight);
+  }
+}
+
+@mixin set-font-properties($variant, $size: 'default', $color: #000, $margin: 0) {
+  font-size: get-font-size($variant, $size);
+  line-height: get-line-height($variant, $size);
+  font-weight: map-get(map-get(primitives.$typography-variants-list, $variant), 'weight');
+  color: map-get(map-get(primitives.$typography-variants-list, $variant), 'color') or $color;
+  margin: map-get(map-get(primitives.$typography-variants-list, $variant), 'margin') or $margin;
+}
+
+@mixin set-typography() {
+  @each $variant, $configs in primitives.$typography-variants-list {
+    @each $key, $value in map-get($configs, 'sizes') {
+      @if($key == 'default') {
+        *.#{$variant} {
+          @include set-font-properties($variant, $key);
+        }
+      } @else {
+        *.#{$variant}-#{$key} {
+          @include set-font-properties($variant, $key);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+@use "sass:map";
+@use "../../core/_theme" as theme;
+
+$stroke-borders-map: (
+  default: theme.get-tone-from-palette(300, "neutral"),
+  hover: theme.get-tone-from-palette(400, "neutral"),
+  pressed: theme.get-tone-from-palette(500, "neutral"),
+  disabled: theme.get-tone-from-palette(200, "neutral"),
+  selected: theme.get-tone-from-palette(600, "primary"),
+);
+
+/**
+ * @TODO: utilizar tokens de texto ($action-text-map)
+ */
+$stroke-theme-map: (
+  disabled: (
+    default: (
+      "text-color": theme.get-tone-from-palette(200, "neutral"),
+      "bg-color": transparent,
+    ),
+  ),
+  neutral: (
+    default: (
+      "text-color": theme.get-tone-from-palette(600, "neutral"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(800, "neutral"),
+      "bg-color": theme.get-tone-from-palette(50, "neutral"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(1000, "neutral"),
+      "bg-color": theme.get-tone-from-palette(100, "neutral"),
+    ),
+  ),
+  primary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "primary"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "primary"),
+      "bg-color": theme.get-tone-from-palette(50, "neutral"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "primary"),
+      "bg-color": theme.get-tone-from-palette(100, "neutral"),
+    ),
+  ),
+  secondary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "secondary"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "secondary"),
+      "bg-color": theme.get-tone-from-palette(50, "neutral"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "secondary"),
+      "bg-color": theme.get-tone-from-palette(100, "neutral"),
+    ),
+  ),
+  success: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "success"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "success"),
+      "bg-color": theme.get-tone-from-palette(50, "neutral"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "success"),
+      "bg-color": theme.get-tone-from-palette(100, "neutral"),
+    ),
+  ),
+  critical: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "critical"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "critical"),
+      "bg-color": theme.get-tone-from-palette(50, "neutral"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "critical"),
+      "bg-color": theme.get-tone-from-palette(100, "neutral"),
+    ),
+  ),
+);

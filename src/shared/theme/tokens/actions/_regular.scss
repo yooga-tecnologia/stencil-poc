@@ -1,0 +1,100 @@
+@use "sass:map";
+@use "../../core/_theme" as theme;
+
+$surface-action-regular: (
+  default: theme.get-tone-from-palette(50, "neutral"),
+  hover: theme.get-tone-from-palette(100, "neutral"),
+  pressed: theme.get-tone-from-palette(200, "neutral"),
+);
+
+/**
+ * @TODO: utilizar tokens de texto ($action-text-map)
+ */
+$regular-theme-map: (
+  common-states: (
+    selected: (
+      default: (
+        "text-color": theme.get-tone-from-palette(800, "primary"),
+        "bg-color": theme.get-tone-from-palette(100, "primary"),
+      ),
+      hover: (
+        "text-color": theme.get-tone-from-palette(900, "primary"),
+        "bg-color": theme.get-tone-from-palette(200, "primary"),
+      ),
+    ),
+    disabled: (
+      "text-color": theme.get-tone-from-palette(50, "neutral"),
+      "bg-color": theme.get-tone-from-palette(200, "neutral"),
+    ),
+  ),
+  neutral: (
+    default: (
+      "text-color": theme.get-tone-from-palette(600, "neutral"),
+      "bg-color": map.get($surface-action-regular, "default"),
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(800, "neutral"),
+      "bg-color": map.get($surface-action-regular, "hover"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(1000, "neutral"),
+      "bg-color": map.get($surface-action-regular, "pressed"),
+    ),
+  ),
+  primary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "primary"),
+      "bg-color": map.get($surface-action-regular, "default"),
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "primary"),
+      "bg-color": map.get($surface-action-regular, "hover"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "primary"),
+      "bg-color": map.get($surface-action-regular, "pressed"),
+    ),
+  ),
+  secondary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "secondary"),
+      "bg-color": map.get($surface-action-regular, "default"),
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "secondary"),
+      "bg-color": map.get($surface-action-regular, "hover"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "secondary"),
+      "bg-color": map.get($surface-action-regular, "pressed"),
+    ),
+  ),
+  success: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "success"),
+      "bg-color": map.get($surface-action-regular, "default"),
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "success"),
+      "bg-color": map.get($surface-action-regular, "hover"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "success"),
+      "bg-color": map.get($surface-action-regular, "pressed"),
+    ),
+  ),
+  critical: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "critical"),
+      "bg-color": map.get($surface-action-regular, "default"),
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "critical"),
+      "bg-color": map.get($surface-action-regular, "hover"),
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "critical"),
+      "bg-color": map.get($surface-action-regular, "pressed"),
+    ),
+  ),
+);

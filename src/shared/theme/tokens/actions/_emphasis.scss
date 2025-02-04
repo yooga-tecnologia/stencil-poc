@@ -1,0 +1,79 @@
+@use "sass:map";
+@use "../../core/_theme" as theme;
+
+@use "./__text" as text;
+
+$emphasis-theme-map: (
+  common-states: (
+    selected: (
+      default: (
+        "text-color": theme.get-tone-from-palette(800, "primary"),
+        "bg-color": theme.get-tone-from-palette(100, "primary"),
+      ),
+      hover: (
+        "text-color": theme.get-tone-from-palette(900, "primary"),
+        "bg-color": theme.get-tone-from-palette(200, "primary"),
+      ),
+    ),
+    disabled: (
+      "text-color": theme.get-tone-from-palette(0, "neutral"),
+      "bg-color": theme.get-tone-from-palette(200, "neutral"),
+    ),
+  ),
+  primary: (
+    default: (
+      "text-color": map.get(text.$action-text-map, "on", "primary", "default"),
+      "bg-color": theme.get-tone-from-palette(300, "primary"),
+    ),
+    hover: (
+      "text-color": map.get(text.$action-text-map, "on", "primary", "hover"),
+      "bg-color": theme.get-tone-from-palette(200, "primary"),
+    ),
+    pressed: (
+      "text-color": map.get(text.$action-text-map, "on", "primary", "pressed"),
+      "bg-color": theme.get-tone-from-palette(400, "primary"),
+    ),
+  ),
+  secondary: (
+    default: (
+      "text-color": map.get(text.$action-text-map, "on", "secondary", "default"),
+      "bg-color": theme.get-tone-from-palette(300, "secondary"),
+    ),
+    hover: (
+      "text-color": map.get(text.$action-text-map, "on", "secondary", "hover"),
+      "bg-color": theme.get-tone-from-palette(200, "secondary"),
+    ),
+    pressed: (
+      "text-color": map.get(text.$action-text-map, "on", "secondary", "pressed"),
+      "bg-color": theme.get-tone-from-palette(400, "secondary"),
+    ),
+  ),
+  success: (
+    default: (
+      "text-color": map.get(text.$action-text-map, "on", "success", "default"),
+      "bg-color": theme.get-tone-from-palette(300, "success"),
+    ),
+    hover: (
+      "text-color": map.get(text.$action-text-map, "on", "success", "hover"),
+      "bg-color": theme.get-tone-from-palette(200, "success"),
+    ),
+    pressed: (
+      "text-color": map.get(text.$action-text-map, "on", "success", "pressed"),
+      "bg-color": theme.get-tone-from-palette(400, "success"),
+    ),
+  ),
+  critical: (
+    default: (
+      "text-color": map.get(text.$action-text-map, "on", "critical", "default"),
+      "bg-color": theme.get-tone-from-palette(300, "critical"),
+    ),
+    hover: (
+      "text-color": map.get(text.$action-text-map, "on", "critical", "hover"),
+      "bg-color": theme.get-tone-from-palette(200, "critical"),
+    ),
+    pressed: (
+      "text-color": map.get(text.$action-text-map, "on", "critical", "pressed"),
+      "bg-color": theme.get-tone-from-palette(400, "critical"),
+    ),
+  ),
+);

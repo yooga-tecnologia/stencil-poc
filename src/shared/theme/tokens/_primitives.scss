@@ -1,0 +1,335 @@
+@use "sass:map";
+@use "sass:math";
+
+//
+// 1. Layout
+//
+
+// Sizing
+
+$scale: (
+  "0_25x":  0.25,
+  "0_5x":   0.50,
+  "0_75x":  0.75,
+  "1x":     1.00,
+  "1_5x":   1.50,
+  "2x":     2.00,
+  "2_5x":   2.50,
+  "3x":     3.00,
+  "3_5x":   3.50,
+  "4x":     4.00,
+  "5x":     5.00,
+  "6x":     6.00,
+  "7x":     7.00,
+  "8x":     8.00,
+  "9x":     9.00,
+  "10x":   10.00,
+  "12x":   12.00,
+  "15x":   15.00,
+  "20x":   20.00,
+);
+
+//  Grid
+
+$base-grid: 8px;
+$base-font-size: 16px;
+
+$column-ratio: math.div(100%, 12);
+$columns: 12;
+
+// Spacing
+
+$spacing-max-value: 10;
+$spacing-types: (
+  "margin": "m",
+  "padding": "p",
+);
+
+// Directions
+
+$directions: (
+  "top": "t",
+  "bottom": "b",
+  "left": "l",
+  "right": "r",
+);
+
+$axis-directions: (
+  x: (left, right),
+  y: (top, bottom),
+);
+
+// Elevations
+$elevation-map: (
+  none: 'none',
+  low: (0px 0px 1px 0px rgba(0, 0, 0, 0.05), 0px 2px 4px 0px rgba(0, 0, 0, 0.05)),
+);
+
+// Typography
+
+$heading-font-family: "Poppins";
+$body-font-family: "Poppins";
+$typography-variants-list: (
+  display: (
+    weight: 600,
+    sizes: (
+      default: 2.625,
+    ),
+  ),
+  heading: (
+    weight: 600,
+    sizes: (
+      large: 2.25,
+      medium: 2.00,
+      small: 1.75,
+    )
+  ),
+  title: (
+    weight: 600,
+    sizes: (
+      large: 1.5,
+      medium: 1.25,
+      small: 1.125,
+    ),
+  ),
+  subtitle: (
+    weight: 400,
+    color: #5F676C,
+    sizes: (
+      default: 1,
+    ),
+  ),
+  label: (
+    weight: 600,
+    color: #5F676C,
+    sizes: (
+      small: 0.75,
+      medium: 1.00,
+      large: 1.125,
+    ),
+  ),
+  body: (
+    weight: 400,
+    color: #5F676C,
+    sizes: (
+      small: 0.75,
+      medium: 1.00,
+      large: 1.125,
+    ),
+  ),
+  caption: (
+    weight: 400,
+    sizes: (
+      default: 0.75,
+    ),
+  ),
+);
+
+$typography-weight-map: (
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+);
+
+//
+// 2. Colors
+//
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$grey-palette: (
+  0: #ffffff,
+  50: #f5f6f6,
+  100: #e5e7e8,
+  200: #ced2d3,
+  300: #abb2b5,
+  400: #abb2b5,
+  500: #5f676c,
+  600: #575e63,
+  700: #4b5053,
+  800: #424648,
+  900: #3a3d3f,
+  950: #242628,
+  1000: #000000,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+    1000: $light-primary-text,
+  ),
+);
+
+$blue-palette: (
+  50: #f1f9fe,
+  100: #e1f1fd,
+  200: #bde3fa,
+  300: #83cef6,
+  400: #41b5ef,
+  500: #19a1e6,
+  600: #0b7cbe,
+  700: #0a639a,
+  800: #0d547f,
+  900: #114769,
+  950: #0b2c46,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+  ),
+);
+
+$magenta-palette: (
+  50: #fdf2f6,
+  100: #fce7f0,
+  200: #fbcfe1,
+  300: #faa7c7,
+  400: #f45b93,
+  500: #ee467f,
+  600: #dd255a,
+  700: #c01642,
+  800: #9e1638,
+  900: #841732,
+  950: #510618,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+  ),
+);
+
+$green-palette: (
+  50: #f0fdf5,
+  100: #dcfcea,
+  200: #bbf7d6,
+  300: #85f0b7,
+  400: #49df90,
+  500: #20bf6b,
+  600: #15a459,
+  700: #148148,
+  800: #16653c,
+  900: #145334,
+  950: #052e1a,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+    1000: $light-primary-text,
+  ),
+);
+
+$red-palette: (
+  50: #fff1f1,
+  100: #ffe1e1,
+  200: #ffc8c8,
+  300: #ffa2a1,
+  400: #fe5a59,
+  500: #f73d3c,
+  600: #e41f1e,
+  700: #c01615,
+  800: #9f1615,
+  900: #831a19,
+  950: #480707,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+    1000: $light-primary-text,
+  ),
+);
+
+$yellow-palette: (
+  50: #fdfde9,
+  100: #fdfbc4,
+  200: #fbf38d,
+  300: #f9e54b,
+  400: #f5d31a,
+  500: #f1c40f,
+  600: #c59009,
+  700: #9d670b,
+  800: #825211,
+  900: #6f4314,
+  950: #412307,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+    1000: $light-primary-text,
+  ),
+);
+
+$purple-palette: (
+  50: #F6F6FC,
+  100: #EFEEF9,
+  200: #E0DFF5,
+  300: #C8C5ED,
+  400: #ACA3E2,
+  500: #8E7ED4,
+  600: #7459C3,
+  700: #6B4FB2,
+  800: #594295,
+  900: #4A377B,
+  950: #2E2352,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    950: $light-primary-text,
+    1000: $light-primary-text,
+  ),
+);

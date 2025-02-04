@@ -1,0 +1,114 @@
+@use "sass:map";
+@use "../../core/_theme" as theme;
+
+$surface-action-plain-hover: theme.get-tone-from-palette(50, "neutral");
+$surface-action-plain-pressed: theme.get-tone-from-palette(100, "neutral");
+
+/**
+ * @TODO: utilizar tokens de texto ($action-text-map)
+ */
+$plain-theme-map: (
+  common-states: (
+    selected: (
+      default: (
+        "text-color": theme.get-tone-from-palette(800, "primary"),
+        "bg-color": theme.get-tone-from-palette(100, "primary"),
+      ),
+      hover: (
+        "text-color": theme.get-tone-from-palette(900, "primary"),
+        "bg-color": theme.get-tone-from-palette(200, "primary"),
+      ),
+    ),
+    disabled: (
+      "text-color": theme.get-tone-from-palette(50, "neutral"),
+      "bg-color": theme.get-tone-from-palette(200, "neutral"),
+    ),
+  ),
+  neutral: (
+    default: (
+      "text-color": theme.get-tone-from-palette(600, "neutral"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(800, "neutral"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(1000, "neutral"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+  primary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "primary"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "primary"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "primary"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+  secondary: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "secondary"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "secondary"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "secondary"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+  critical: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "critical"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "critical"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "critical"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+  success: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "success"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "success"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "success"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+
+  /// Applied to button-dismiss only
+  /// @see https://github.com/yooga-tecnologia/sandbox-frontend/blob/main/projects/core/src/components/button/button-dismiss.component.ts
+  warning: (
+    default: (
+      "text-color": theme.get-tone-from-palette(700, "warning"),
+      "bg-color": transparent,
+    ),
+    hover: (
+      "text-color": theme.get-tone-from-palette(900, "warning"),
+      "bg-color": $surface-action-plain-hover,
+    ),
+    pressed: (
+      "text-color": theme.get-tone-from-palette(950, "warning"),
+      "bg-color": $surface-action-plain-pressed,
+    ),
+  ),
+);
