@@ -39,6 +39,14 @@ export namespace Components {
         "size": SizeVariants;
         "variant": ButtonStyle;
     }
+    interface YooInput {
+        "condition": boolean;
+        "inputName": string;
+        "isRequired": boolean;
+        "label": string;
+        "placeholder"?: string;
+        "trailingIcon": boolean;
+    }
 }
 declare global {
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
@@ -59,10 +67,17 @@ declare global {
         prototype: HTMLYooButtonElement;
         new (): HTMLYooButtonElement;
     };
+    interface HTMLYooInputElement extends Components.YooInput, HTMLStencilElement {
+    }
+    var HTMLYooInputElement: {
+        prototype: HTMLYooInputElement;
+        new (): HTMLYooInputElement;
+    };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
         "my-component": HTMLMyComponentElement;
         "yoo-button": HTMLYooButtonElement;
+        "yoo-input": HTMLYooInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -95,10 +110,19 @@ declare namespace LocalJSX {
         "size"?: SizeVariants;
         "variant"?: ButtonStyle;
     }
+    interface YooInput {
+        "condition"?: boolean;
+        "inputName"?: string;
+        "isRequired"?: boolean;
+        "label"?: string;
+        "placeholder"?: string;
+        "trailingIcon"?: boolean;
+    }
     interface IntrinsicElements {
         "my-button": MyButton;
         "my-component": MyComponent;
         "yoo-button": YooButton;
+        "yoo-input": YooInput;
     }
 }
 export { LocalJSX as JSX };
@@ -108,6 +132,7 @@ declare module "@stencil/core" {
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "yoo-button": LocalJSX.YooButton & JSXBase.HTMLAttributes<HTMLYooButtonElement>;
+            "yoo-input": LocalJSX.YooInput & JSXBase.HTMLAttributes<HTMLYooInputElement>;
         }
     }
 }
