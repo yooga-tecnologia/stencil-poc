@@ -2,6 +2,9 @@ dist/
 www/
 loader/
 
+storybook-static/
+*storybook.log
+
 *~
 *.sw[mnpcod]
 *.log
@@ -17,7 +20,6 @@ log.txt
 .vscode/
 .sass-cache/
 .versions/
-node_modules/
 $RECYCLE.BIN/
 
 .DS_Store
@@ -25,4 +27,5 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
-*storybook.log
+node_modules/
+package-lock.json

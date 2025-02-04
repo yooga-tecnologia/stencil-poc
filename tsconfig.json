@@ -17,6 +17,10 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment",
     "types": [ "node", "jest" ],
+    "baseUrl": "./",
+    "paths": {
+      "@theme/*": ["src/shared/theme/*"]
+    }
   },
   "include": [
     "src"
