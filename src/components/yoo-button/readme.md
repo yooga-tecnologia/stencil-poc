@@ -15,6 +15,7 @@
 | `iconAnimation` | `icon-animation` |             | `any`                                                                                         | `undefined` |
 | `iconLeft`      | `icon-left`      |             | `string`                                                                                      | `undefined` |
 | `iconRight`     | `icon-right`     |             | `string`                                                                                      | `undefined` |
+| `label`         | `label`          |             | `string`                                                                                      | `undefined` |
 | `size`          | `size`           |             | `"large" \| "medium" \| "small"`                                                              | `"medium"`  |
 | `variant`       | `variant`        |             | `"emphasis" \| "plain" \| "regular" \| "stroke"`                                              | `"regular"` |
 

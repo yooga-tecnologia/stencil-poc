@@ -1,8 +1,16 @@
 import { Component, Host, Prop, h } from "@stencil/core";
 
 import { SizeVariants, ThemePalette } from "@theme/theme.types";
+import { ButtonStyle } from './yoo-button.types';
 
-export type ButtonStyle = "regular" | "emphasis"| "stroke"| "plain";
+export type ButtonProps = {
+  label: string,
+  size: SizeVariants,
+  color: ThemePalette,
+  variant: ButtonStyle,
+  block: boolean,
+  disabled: boolean,
+}
 
 @Component({
   tag: "yoo-button",
@@ -18,6 +26,7 @@ export class YooButton {
   @Prop() block: boolean = false;
 
   // Structure
+  @Prop() label?: string | undefined = undefined;
   @Prop() iconRight?: string | undefined = undefined;
   @Prop() iconLeft?: string | undefined = undefined;
   @Prop() iconAnimation?: any = undefined;
@@ -30,11 +39,22 @@ export class YooButton {
     const variantClass = `button-${this.variant}`;
     const colorClass = `button-${this.color}`;
     const disabledClass = this.disabled ? "button-disabled" : "";
+    const blockClass = this.block ? "button-block" : "";
 
-    return `${variantClass} ${sizeClass} ${colorClass} ${disabledClass}`;
+    return `${blockClass} ${variantClass} ${sizeClass} ${colorClass} ${disabledClass}`;
   }
 
   render() {
+    if (this.label) {
+      return (
+        <Host>
+          <button class={this.buttonClass} disabled={this.disabled} part="button">
+            <span>{this.label}</span>
+          </button>
+        </Host>
+      );
+    }
+
     return (
       <Host>
         <button class={this.buttonClass} disabled={this.disabled} part="button">

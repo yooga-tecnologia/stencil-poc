@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { SizeVariants, ThemePalette } from "./shared/theme/theme.types";
-import { ButtonStyle } from "./components/yoo-button/yoo-button";
+import { ButtonStyle } from "./components/yoo-button/yoo-button.types";
 export { SizeVariants, ThemePalette } from "./shared/theme/theme.types";
-export { ButtonStyle } from "./components/yoo-button/yoo-button";
+export { ButtonStyle } from "./components/yoo-button/yoo-button.types";
 export namespace Components {
     interface MyButton {
         "disabled": boolean;
@@ -36,6 +36,7 @@ export namespace Components {
         "iconAnimation"?: any;
         "iconLeft"?: string | undefined;
         "iconRight"?: string | undefined;
+        "label"?: string | undefined;
         "size": SizeVariants;
         "variant": ButtonStyle;
     }
@@ -92,6 +93,7 @@ declare namespace LocalJSX {
         "iconAnimation"?: any;
         "iconLeft"?: string | undefined;
         "iconRight"?: string | undefined;
+        "label"?: string | undefined;
         "size"?: SizeVariants;
         "variant"?: ButtonStyle;
     }
