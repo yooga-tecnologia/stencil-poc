@@ -9,7 +9,7 @@ describe('my-button', () => {
     });
     expect(page.root).toEqualHtml(`
       <my-button>
-        <button class="btn primary">
+        <button class="my-button my-button--primary" part="button">
           Clique aqui
         </button>
       </my-button>
@@ -22,8 +22,8 @@ describe('my-button', () => {
       html: `<my-button label="Custom label"></my-button>`,
     });
     expect(page.root).toEqualHtml(`
-      <my-button>
-        <button class="btn primary">
+      <my-button label="Custom label">
+        <button class="my-button my-button--primary" part="button">
           Custom label
         </button>
       </my-button>
@@ -36,8 +36,8 @@ describe('my-button', () => {
       html: `<my-button variant="secondary"></my-button>`,
     });
     expect(page.root).toEqualHtml(`
-      <my-button>
-        <button class="btn secondary">
+      <my-button variant="secondary">
+        <button class="my-button my-button--secondary" part="button">
           Clique aqui
         </button>
       </my-button>
@@ -49,7 +49,9 @@ describe('my-button', () => {
       components: [MyButton],
       html: `<my-button disabled></my-button>`,
     });
-    const button = page.root.shadowRoot.querySelector('button');
-    expect(button.disabled).toBe(true);
+
+    const button = page.root.querySelector('button'); 
+    expect(button).not.toBeNull();
+    expect(button?.hasAttribute('disabled')).toBe(true);
   });
 });

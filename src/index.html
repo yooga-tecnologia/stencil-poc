@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/study.esm.js"></script>
-    <script nomodule src="/build/study.js"></script>
-    <link rel="stylesheet" href="/build/study.css" />
-  </head>
-  <body>
-    <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
-    <my-button label="Primary" variant="primary"></my-button>
-    <my-button label="Secondary" variant="secondary"></my-button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
 
-    <yoo-button block>Default</yoo-button>
-    <yoo-button variant="regular" label="regular"></yoo-button>
+  <script type="module" src="/build/study.esm.js"></script>
+  <script nomodule src="/build/study.js"></script>
+  <link rel="stylesheet" href="/build/study.css" />
+</head>
 
-    <yoo-button variant="stroke">Stroke</yoo-button>
-    <yoo-button variant="plain">Plain</yoo-button>
-    <yoo-button variant="emphasis">Emphasis</yoo-button>
+<body>
+  <!-- MyComponent Example -->
+  <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
 
-    <yoo-button size="small">small</yoo-button>
-    <yoo-button size="medium">medium</yoo-button>
-    <yoo-button size="large">large</yoo-button>
-  </body>
+  <!-- MyButton Example -->
+  <my-button label="Primary" variant="primary"></my-button>
+  <my-button label="Secondary" variant="secondary"></my-button>
+
+  <!-- YooButton Examples -->
+  <yoo-button>Default</yoo-button>
+  <yoo-button variant="regular">Regular</yoo-button>
+  <yoo-button variant="stroke">Stroke</yoo-button>
+  <yoo-button variant="plain">Plain</yoo-button>
+  <yoo-button variant="emphasis">Emphasis</yoo-button>
+
+  <yoo-button size="small">small</yoo-button>
+  <yoo-button size="medium">medium</yoo-button>
+  <yoo-button size="large">large</yoo-button>
+
+  <!-- YooInput Component Example -->
+  <div style="width: 1000px;">
+
+    <yoo-input inputName="username" label="Username" placeholder="Enter your username" isRequired="true"
+      condition="false" trailing-icon="true"></yoo-input>
+
+    <yoo-input inputName="email" label="Email" placeholder="Enter your email" isRequired="false" condition="false"
+      trailing-icon="true"></yoo-input>
+
+    <yoo-input inputName="name" label="name" placeholder="Enter your name" isRequired="true"
+      condition="true"></yoo-input>
+    <yoo-input inputName="password" label="Password" placeholder="Enter your password" isRequired="true"
+      trailingIcon="true"></yoo-input>
+  </div>
+
+  </div>
+
+</body>
+
 </html>
-
