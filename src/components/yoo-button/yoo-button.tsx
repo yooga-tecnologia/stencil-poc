@@ -23,13 +23,13 @@ export class YooButton {
   @Prop() size: SizeVariants = "medium";
   @Prop() color: ThemePalette = "primary";
   @Prop() variant: ButtonStyle = "regular";
-  @Prop() block: boolean = false;
+  @Prop() block: boolean = false; // TODO: Adicionar no storybook / Talvez trocar nome da prop para "fullWidth"
 
   // Structure
   @Prop() label?: string | undefined = undefined;
   @Prop() iconRight?: string | undefined = undefined;
   @Prop() iconLeft?: string | undefined = undefined;
-  @Prop() iconAnimation?: any = undefined;
+  @Prop() iconAnimation?: any = undefined; // TODO: Adicionar um type
 
   // States
   @Prop() disabled?: boolean = false;

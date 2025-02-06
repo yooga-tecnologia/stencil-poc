@@ -1,22 +1,21 @@
 {
   "name": "@biancardii/study",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/study/study.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/types/components.d.ts"
+      "import": "./dist/study/study.esm.js",
+      "require": "./dist/study/study.cjs.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
-      "types": "./dist/types/components/my-component.d.ts"
+      "types": "./dist/components/my-component.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
