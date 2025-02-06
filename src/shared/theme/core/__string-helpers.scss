@@ -1,0 +1,78 @@
+@use "sass:list";
+@use "sass:string";
+
+@use '../tokens/primitives' as p;
+
+///
+/// Splits a string into a list of substrings based on a separator.
+///
+/// @param {String} $string - The string to split.
+/// @param {String} $separator - The separator to use for splitting the string.
+/// @return {List} - A list of substrings.
+///
+/// @example scss
+///   str-split("hello-world", "-")
+///   // Returns: ("hello", "world")
+///
+@function str-split($string, $separator) {
+  $split-arr: ();
+  $index : str-index($string, $separator);
+
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    $split-arr: append($split-arr, $item);
+    $string: str-slice($string, $index + 1);
+    $index : str-index($string, $separator);
+  }
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}
+
+///
+/// Capitalizes the first character of a string.
+///
+/// @param {String} $text - The string to capitalize.
+/// @return {String} - The capitalized string.
+///
+/// @example scss
+///   to-capitalize("hello")
+///   // Returns: "Hello"
+///
+@function to-capitalize($text) {
+  $s1: string.to-upper-case(str-slice($text, 1, 1));
+  $s2: str-slice($text, 2);
+
+  @return $s1 + $s2;
+}
+
+///
+/// Converts a kebab-case string to PascalCase.
+///
+/// @param {String} $text - The kebab-case string to convert.
+/// @return {String} - The PascalCase string.
+///
+/// @example scss
+///   to-pascal-case("hello-world")
+///   // Returns: "HelloWorld"
+///
+@function to-pascal-case($text) {
+  $i: string.index($text, "-");
+
+  @if($i == null) {
+    @return to-capitalize($text);
+  }
+
+  @else {
+    $list: str-split($text, '-');
+    $length: list.length($list);
+    $str: "";
+
+    @each $item in $list {
+      $str: '#{$str}' + to-capitalize($item);
+    }
+
+    @return $str;
+  }
+}

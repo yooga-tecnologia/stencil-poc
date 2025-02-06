@@ -1,0 +1,116 @@
+@use 'sass:map';
+
+@use '../tokens/primitives';
+
+$base-grid: primitives.$base-grid;
+$column-ratio: primitives.$column-ratio;
+
+/**
+* SPACING AND UTILS
+*/
+
+div.container,
+div.pane {
+  width: 100%;
+  display: inline-block;
+}
+
+div.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0 - ($base-grid * 2);
+  margin-left: 0 - ($base-grid * 2);
+
+  & > *[class^="col-"] {
+    padding-right: $base-grid * 2;
+    padding-left: $base-grid * 2;
+  }
+
+  @for $i from 1 through primitives.$columns {
+    .col-#{$i} {
+      width: calc(#{$column-ratio} * #{$i});
+    }
+
+    @media screen and (max-width: 991px) {
+      .col-sm-#{$i} {
+        width: calc(#{$column-ratio} * #{$i});
+      }
+    }
+    @media screen and (min-width: 992px) {
+      .col-md-#{$i} {
+        width: calc(#{$column-ratio} * #{$i});
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .col-lg-#{$i} {
+        width: calc(#{$column-ratio} * #{$i}) !important;
+      }
+    }
+  }
+}
+
+@function get-scale-value($index) {
+  $map-keys: map-keys(primitives.$scale);
+  $key: nth($map-keys, $index);
+  @return map-get(primitives.$scale, $key);
+}
+
+@mixin set-spacing($type-key, $key: null, $value, $axis: false) {
+  $type: map-get(primitives.$spacing-types, $type-key);
+  $scale-value: get-scale-value($value);
+
+  @if $axis {
+    $prop: map-get(primitives.$axis-directions, $key);
+
+     .#{$type}#{$key}-#{$value} {
+      @each $item in $prop {
+        #{$type-key}-#{$item}: #{$scale-value * primitives.$base-grid} !important;
+      }
+    }
+  } @else if $key == null {
+     .#{$type}-#{$value} {
+      #{$type-key}: #{$scale-value * primitives.$base-grid} !important;
+    }
+  } @else {
+    $direction: map-get(primitives.$directions, $key);
+
+     .#{$type}#{$key}-#{$value} {
+      #{$type-key}-#{$direction}: #{$scale-value * primitives.$base-grid} !important;
+    }
+  }
+}
+
+@mixin set-spacing-directions() {
+  @each $sc-key, $sc-value in primitives.$scale {
+    $i: index(primitives.$scale, $sc-key $sc-value);
+
+    @if $i <= primitives.$spacing-max-value {
+      @each $sp-key, $sp-value in primitives.$spacing-types {
+        @include set-spacing($sp-key, $value: $i);
+
+        @each $d-key, $direction in primitives.$directions {
+          @include set-spacing($sp-key, $d-key, $value: $i);
+        }
+
+        @each $a-d-key, $direction in primitives.$axis-directions {
+          @include set-spacing($sp-key, $a-d-key, $value: $i, $axis: true);
+        }
+      }
+    }
+  }
+
+}
+
+.mr-auto { margin-right: auto !important; }
+.ml-auto { margin-left: auto !important;   }
+
+.justify-content-end { justify-content: flex-end; }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

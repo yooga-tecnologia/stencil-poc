@@ -1,0 +1,13 @@
+@use '../../shared/theme/core/theme' as theme;
+@use '../../shared/theme/core/typography' as typography;
+@use '../../shared/theme/tokens/sizing' as sizing;
+
+@import './styles/index.scss';
+
+.block {
+  width: 100%;
+}
+
+.button-medium {
+  padding: 12px;
+}

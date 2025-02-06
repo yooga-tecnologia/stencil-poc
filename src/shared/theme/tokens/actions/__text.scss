@@ -1,0 +1,85 @@
+@use "sass:map";
+@use '../../core/theme' as theme;
+
+$action-text-map: (
+  common-states: (
+    disabled: theme.get-tone-from-palette(200, "neutral"),
+    selected: theme.get-tone-from-palette(800, "primary"),
+  ),
+  input: (
+    placeholder: theme.get-tone-from-palette(300, "neutral"),
+    value: theme.get-tone-from-palette(950, "neutral"),
+  ),
+  primary: (
+    default: theme.get-tone-from-palette(700, "primary"),
+    hover: theme.get-tone-from-palette(900, "primary"),
+    pressed: theme.get-tone-from-palette(950, "primary"),
+  ),
+  secondary: (
+    default: theme.get-tone-from-palette(700, "secondary"),
+    hover: theme.get-tone-from-palette(900, "secondary"),
+    pressed: theme.get-tone-from-palette(950, "secondary"),
+  ),
+  neutral: (
+    default: theme.get-tone-from-palette(600, "neutral"),
+    hover: theme.get-tone-from-palette(800, "neutral"),
+    pressed: theme.get-tone-from-palette(1000, "neutral"),
+  ),
+  info: (
+    default: theme.get-tone-from-palette(600, "info"),
+    hover: theme.get-tone-from-palette(800, "info"),
+    pressed: theme.get-tone-from-palette(1000, "info"),
+  ),
+  critical: (
+    default: theme.get-tone-from-palette(700, "critical"),
+    hover: theme.get-tone-from-palette(900, "critical"),
+    pressed: theme.get-tone-from-palette(950, "critical"),
+  ),
+  success: (
+    default: theme.get-tone-from-palette(700, "success"),
+    hover: theme.get-tone-from-palette(900, "success"),
+    pressed: theme.get-tone-from-palette(950, "success"),
+  ),
+  warning: (
+    default: theme.get-tone-from-palette(700, "warning"),
+    hover: theme.get-tone-from-palette(900, "warning"),
+    pressed: theme.get-tone-from-palette(950, "warning"),
+  ),
+  on: (
+    primary: (
+      default: theme.get-tone-from-palette(800, "primary"),
+      hover: theme.get-tone-from-palette(800, "primary"),
+      pressed: theme.get-tone-from-palette(950, "primary"),
+    ),
+    secondary: (
+      default: theme.get-tone-from-palette(800, "secondary"),
+      hover: theme.get-tone-from-palette(800, "secondary"),
+      pressed: theme.get-tone-from-palette(950, "secondary"),
+    ),
+    neutral: (
+      default: theme.get-tone-from-palette(800, "neutral"),
+      hover: theme.get-tone-from-palette(800, "neutral"),
+      pressed: theme.get-tone-from-palette(950, "neutral"),
+    ),
+    info: (
+      default: theme.get-tone-from-palette(800, "info"),
+      hover: theme.get-tone-from-palette(800, "info"),
+      pressed: theme.get-tone-from-palette(950, "info"),
+    ),
+    critical: (
+      default: theme.get-tone-from-palette(800, "critical"),
+      hover: theme.get-tone-from-palette(800, "critical"),
+      pressed: theme.get-tone-from-palette(950, "critical"),
+    ),
+    success: (
+      default: theme.get-tone-from-palette(800, "success"),
+      hover: theme.get-tone-from-palette(800, "success"),
+      pressed: theme.get-tone-from-palette(950, "success"),
+    ),
+    warning: (
+      default: theme.get-tone-from-palette(800, "warning"),
+      hover: theme.get-tone-from-palette(800, "warning"),
+      pressed: theme.get-tone-from-palette(950, "warning"),
+    ),
+  )
+);

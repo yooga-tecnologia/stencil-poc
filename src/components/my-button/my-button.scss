@@ -1,48 +1,38 @@
-@use '../../design-tokens' as *;
+@use '../../common-variables' as *;
 
-.my-button {
-  padding: $padding-base;
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-height);
+  width: var(--button-width);
+  padding: var(--padding-base);
+  font-size: var(--font-size-default);
+  border-radius: var(--border-radius);
   border: none;
-  border-radius: $border-radius;
-  font-size: $font-size-base;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease-in-out;
+}
 
-  &--primary {
-    background-color: $color-primary;
-    color: $color-text-light;
+.my-button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
 
-    &:hover {
-      background-color: $color-primary-hover;
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
+  &:hover {
+    background-color: var(--color-primary-hover);
   }
+}
 
-  &--secondary {
-    background-color: $color-secondary;
-    color: $color-text-light;
+.my-button--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
 
-    &:hover {
-      background-color: $color-secondary-hover;
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
+  &:hover {
+    background-color: var(--color-secondary-hover);
   }
+}
 
-  &--disabled {
-    background-color: $color-disabled;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  &:disabled {
-    background-color: $color-disabled;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+.my-button--disabled {
+  background-color: var(--color-disabled);
+  cursor: not-allowed;
 }

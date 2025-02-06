@@ -14,6 +14,13 @@
 | `variant`  | `variant`  |             | `"primary" \| "secondary"` | `'primary'`     |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"button"` |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

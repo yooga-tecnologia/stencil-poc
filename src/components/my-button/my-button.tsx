@@ -1,9 +1,9 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'my-button',
   styleUrl: 'my-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class MyButton {
   @Prop() label: string = 'Clique aqui';
@@ -19,9 +19,11 @@ export class MyButton {
 
   render() {
     return (
-      <button class={this.buttonClass} disabled={this.disabled}>
-        {this.label}
-      </button>
+      <Host>
+        <button class={this.buttonClass} disabled={this.disabled} part="button">
+          {this.label}
+        </button>
+      </Host>
     );
   }
 }

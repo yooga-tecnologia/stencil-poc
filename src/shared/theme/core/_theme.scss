@@ -1,0 +1,54 @@
+@use "sass:map";
+
+@use "../tokens/primitives";
+@use "../tokens/sizing";
+
+@import "./animations";
+
+$theme-map: (
+  primary:    primitives.$blue-palette,
+  secondary:  primitives.$magenta-palette,
+  tertiary:   primitives.$purple-palette,
+  neutral:    primitives.$grey-palette,
+  info:       primitives.$blue-palette,
+  success:    primitives.$green-palette,
+  warning:    primitives.$yellow-palette,
+  critical:   primitives.$red-palette,
+);
+
+@function get-color($color) {
+  @return (map.get($theme-map, $color));
+}
+
+@function get-color-palette-by-key($key) {
+  @return map.get($theme-map, $key);
+}
+
+@function get-tone-from-palette($tone, $paletteName) {
+  $palette-map: map.get($theme-map, $paletteName);
+  @return map.get($palette-map, $tone);
+}
+
+@function get-elevation-value($elevation) {
+  @return map.get(primitives.$elevation-map, $elevation);
+}
+
+@mixin set-colors(
+  $text-color,
+  $bg-color: transparent,
+  $border-color: none
+) {
+  color: $text-color;
+  background-color: $bg-color;
+  border-radius: map.get(sizing.$border-radius, "medium");
+
+  svg g {
+    fill: $text-color;
+  }
+
+  @if $border-color != none {
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border-color;
+  }
+}
