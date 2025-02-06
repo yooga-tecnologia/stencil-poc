@@ -30,7 +30,7 @@ export namespace Components {
         "icon": IconName;
         "size": number | string;
     }
-    interface YooInput {
+    interface YooInputGroup {
         "condition": boolean;
         "inputName": string;
         "isRequired": boolean;
@@ -52,16 +52,16 @@ declare global {
         prototype: HTMLYooIconElement;
         new (): HTMLYooIconElement;
     };
-    interface HTMLYooInputElement extends Components.YooInput, HTMLStencilElement {
+    interface HTMLYooInputGroupElement extends Components.YooInputGroup, HTMLStencilElement {
     }
-    var HTMLYooInputElement: {
-        prototype: HTMLYooInputElement;
-        new (): HTMLYooInputElement;
+    var HTMLYooInputGroupElement: {
+        prototype: HTMLYooInputGroupElement;
+        new (): HTMLYooInputGroupElement;
     };
     interface HTMLElementTagNameMap {
         "yoo-button": HTMLYooButtonElement;
         "yoo-icon": HTMLYooIconElement;
-        "yoo-input": HTMLYooInputElement;
+        "yoo-input-group": HTMLYooInputGroupElement;
     }
 }
 declare namespace LocalJSX {
@@ -83,7 +83,7 @@ declare namespace LocalJSX {
         "icon": IconName;
         "size"?: number | string;
     }
-    interface YooInput {
+    interface YooInputGroup {
         "condition"?: boolean;
         "inputName"?: string;
         "isRequired"?: boolean;
@@ -94,7 +94,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "yoo-button": YooButton;
         "yoo-icon": YooIcon;
-        "yoo-input": YooInput;
+        "yoo-input-group": YooInputGroup;
     }
 }
 export { LocalJSX as JSX };
@@ -103,7 +103,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "yoo-button": LocalJSX.YooButton & JSXBase.HTMLAttributes<HTMLYooButtonElement>;
             "yoo-icon": LocalJSX.YooIcon & JSXBase.HTMLAttributes<HTMLYooIconElement>;
-            "yoo-input": LocalJSX.YooInput & JSXBase.HTMLAttributes<HTMLYooInputElement>;
+            "yoo-input-group": LocalJSX.YooInputGroup & JSXBase.HTMLAttributes<HTMLYooInputGroupElement>;
         }
     }
 }

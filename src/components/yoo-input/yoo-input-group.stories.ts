@@ -1,6 +1,6 @@
 export default {
-  title: "Components/Input",
-  component: "yoo-input",
+  title: "Components/InputGroup",
+  component: "yoo-input-group",
   argTypes: {
     inputName: { control: "text" },
     label: { control: "text" },
@@ -12,20 +12,21 @@ export default {
 };
 
 const Template = (args) => `
-  <div class"width: 500px">
-    <yoo-input
+  <div style="width: 500px">
+    <yoo-input-group
       inputName="${args.inputName}"
       label="${args.label}"
       placeholder="${args.placeholder}"
-      isRequired="${args.isRequired}"
+      is-required="${args.isRequired}"
       condition="${args.condition}"
       trailingIcon="${args.trailingIcon}"
       block
     >
       <span slot="helperText">Helper Text</span>
+      <input slot="input" />
       ${args.trailingIcon ? '<span slot="actions">🔍</span>' : ""}
-    </yoo-input>
-  <div>
+    </yoo-input-group>
+  </div>
 `;
 
 export const Default = Template.bind({});
@@ -37,21 +38,3 @@ Default.args = {
   condition: false,
   trailingIcon: false,
 };
-
-// export const Required = Template.bind({});
-// Required.args = {
-//   ...Default.args,
-//   isRequired: true,
-// };
-
-// export const Disabled = Template.bind({});
-// Disabled.args = {
-//   ...Default.args,
-//   condition: true,
-// };
-
-// export const WithTrailingIcon = Template.bind({});
-// WithTrailingIcon.args = {
-//   ...Default.args,
-//   trailingIcon: true,
-// };

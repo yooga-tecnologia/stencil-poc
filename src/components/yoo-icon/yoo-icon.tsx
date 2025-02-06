@@ -1,5 +1,5 @@
 import { Component, Prop, h, State, Element, Watch, } from '@stencil/core';
-import { ICONS } from './yoo-icon-base';
+// import { ICONS } from './yoo-icon-base';
 import type { IconName, IconAnimation, Background } from './yoo-icon.types';
 
 @Component({
