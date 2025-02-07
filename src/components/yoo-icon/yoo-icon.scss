@@ -1,24 +1,31 @@
 @import "../../shared/theme/core/animations";
 
-.icon-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+yoo-icon {
+  display: inline-block;
 
-  svg {
+  .icon-wrapper {
     position: relative;
-    z-index: 1;
-  }
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .icon-bg {
-    position: absolute;
-    z-index: 0;
-    display: block;
-    top: 0;
+    svg {
+      position: absolute;
+      z-index: 1;
+    }
 
-    &.border-circle {
-      border-radius: 50%;
+    .icon-bg {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+
+      &.border-circle  {
+        border-radius: 50%;
+      }
     }
   }
 }

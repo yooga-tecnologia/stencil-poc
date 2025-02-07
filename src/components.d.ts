@@ -7,10 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { SizeVariants, ThemePalette } from "./shared/theme/theme.types";
 import { ButtonStyle } from "./components/yoo-button/yoo-button.types";
-import { Background, IconAnimation, IconName } from "./components/yoo-icon/yoo-icon.types";
+import { IconAnimation, IconName, IconSize } from "./components/yoo-icon/yoo-icon.types";
 export { SizeVariants, ThemePalette } from "./shared/theme/theme.types";
 export { ButtonStyle } from "./components/yoo-button/yoo-button.types";
-export { Background, IconAnimation, IconName } from "./components/yoo-icon/yoo-icon.types";
+export { IconAnimation, IconName, IconSize } from "./components/yoo-icon/yoo-icon.types";
 export namespace Components {
     interface YooButton {
         "block": boolean;
@@ -25,10 +25,10 @@ export namespace Components {
     }
     interface YooIcon {
         "animation"?: IconAnimation;
-        "background"?: Background;
+        "background"?: string;
         "color": string;
         "icon": IconName;
-        "size": number | string;
+        "size": number | IconSize;
     }
     interface YooInput {
         "condition": boolean;
@@ -78,10 +78,10 @@ declare namespace LocalJSX {
     }
     interface YooIcon {
         "animation"?: IconAnimation;
-        "background"?: Background;
+        "background"?: string;
         "color"?: string;
         "icon": IconName;
-        "size"?: number | string;
+        "size"?: number | IconSize;
     }
     interface YooInput {
         "condition"?: boolean;

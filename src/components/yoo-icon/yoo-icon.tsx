@@ -1,6 +1,6 @@
-import { Component, Prop, h, State, Element, Watch, } from '@stencil/core';
+import { Component, Prop, h, Element } from '@stencil/core';
 import { ICONS } from './yoo-icon-base';
-import type { IconName, IconAnimation, Background } from './yoo-icon.types';
+import type { IconName, IconAnimation, IconSize } from './yoo-icon.types';
 
 @Component({
   tag: 'yoo-icon',
@@ -10,78 +10,112 @@ import type { IconName, IconAnimation, Background } from './yoo-icon.types';
 export class IconComponent {
   @Element() el!: HTMLElement;
 
-  @Prop() size: number | string = 'medium';
   @Prop() icon!: IconName;
+  @Prop() size: number | IconSize = 'medium';
   @Prop() color: string = 'currentColor';
-  @Prop() background?: Background;
+  @Prop() background?: string;
   @Prop() animation?: IconAnimation;
 
-  @State() svgIcon!: string;
-  @State() iconSize!: string;
-  @State() bgSize!: string;
-  @State() transform!: string;
-  @State() animate!: string;
-
-  private transformDirections: Record<string, string> = {
-    '-up': 'rotate(0)',
-    '-down': 'rotate(180 0 0)',
-    '-right': 'rotate(90 0 0)',
-    '-left': 'rotate(-90 0 0)',
-  };
+  svgIcon!: string;
+  iconSize!: string;
+  bgSize!: string;
+  transform!: string;
+  animate!: string;
+  baseIconName: string;
+  backgroundElRef!: HTMLSpanElement;
 
   componentWillLoad() {
-    // this.updateIcon();
+    this.calculateSizes();
+    this.baseIconName = this.getBaseIconName(this.icon);
+    this.transform = this.getTransform(this.icon);
   }
 
-  @Watch('icon')
-  @Watch('size')
-  @Watch('color')
-  // updateIcon() {
-  //   const baseIconName = this.getBaseIconName(this.icon);
-  //   this.transform = this.transformDirections[this.icon] || 'rotate(0)';
-  //   this.svgIcon = ICONS[baseIconName] || '';
-  //   this.calculateSizes();
-  //   this.animate = this.animation === 'rotation' ? 'rotation 1s linear infinite' : '';
-  // }
-
-  getBaseIconName(iconName: IconName): string {
-    return Object.keys(this.transformDirections).some((key) => iconName.includes(key))
-      ? iconName.split('-')[0]
-      : iconName;
+  componentDidLoad() {
+    this.setBackgroundProperties();
+    this.updateIcon();
   }
 
-  // calculateSizes() {
-  //   const sizeMap: Record<string, number> = {
-  //     small: 16,
-  //     medium: 24,
-  //     large: 32,
-  //     doubleLarge: 64,
-  //   };
+  updateIcon() {
+    const wrapper = this.el.firstElementChild;
+    const baseIconName = this.getBaseIconName(this.icon);
+    const container = wrapper.firstElementChild;
 
-  //   const baseSize = typeof this.size === 'number' ? this.size : sizeMap[this.size] || sizeMap.medium;
-  //   this.bgSize = this.background && baseSize > sizeMap.medium ? `${baseSize}px` : undefined;
-  //   this.iconSize = this.bgSize ? `${baseSize - sizeMap.small}px` : `${baseSize}px`;
+    container.firstElementChild.innerHTML = ICONS[baseIconName];
+  }
 
-  //   console.log(this.iconSize);
-  // }
+  getBaseIconName(iconName: string): string {
+    const directionPattern = /-(up|down|right|left)$/;
+
+    if(!directionPattern) {
+      return iconName
+    } else {
+      return iconName.replace(directionPattern, '');
+    }
+  }
+
+  calculateSizes() {
+    const sizeMap: Record<string, number> = {
+      small: 16,
+      medium: 24,
+      large: 32,
+      doubleLarge: 64,
+    };
+
+    const baseSize = typeof this.size === "number"
+      ? this.size
+      : sizeMap[this.size];
+
+    this.bgSize = (this.background && baseSize > sizeMap.medium) ? `${baseSize}px` : undefined;
+    this.iconSize = this.bgSize ? `${baseSize - sizeMap.small}px` : `${baseSize}px`;
+  }
+
+  getTransform(iconName: string): string {
+    if (iconName.includes('-up')) {
+      return 'rotate(0)'; // Nenhuma rotação necessária para cima
+    } else if (iconName.includes('-down')) {
+      return 'rotate(180 0 0)'; // Rotação de 180 graus
+    } else if (iconName.includes('-right')) {
+      return 'rotate(90 0 0)'; // Rotação de 90 graus no sentido horário
+    } else if (iconName.includes('-left')) {
+      return 'rotate(-90 0 0)'; // Rotação de 90 graus no sentido anti-horário
+    }
+
+    return 'rotate(0)'; // Nenhuma rotação necessária para cima (-up) ou sem a prop rotate
+  }
+
+  setBackgroundProperties(): void {
+    if (!this.background) {
+      this.el.setAttribute("style", `width: ${this.iconSize}; height: ${this.iconSize}`);
+      return
+    }
+
+    this.el.setAttribute("style", `width: ${this.bgSize}; height: ${this.bgSize}`);
+    this.backgroundElRef = this.el.querySelector("span");
+    this.backgroundElRef.classList.add("icon-bg", "border-circle");
+    this.backgroundElRef.style.backgroundColor = this.background;
+    this.backgroundElRef.style.width = this.bgSize;
+    this.backgroundElRef.style.height = this.bgSize;
+  }
 
   render() {
     return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width={this.iconSize}
-        height={this.iconSize}
-        fill={this.color}
-        style={{ animation: this.animate }}
-        transform={this.transform}
-      >
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10m-5.184-1.527a1 1 0 0 0-1.381-1.446l-4.81 4.59-2.06-1.965a1 1 0 0 0-1.38 1.446l2.75 2.625a1 1 0 0 0 1.38 0z" fill="inherit"/>
-        
+      <div class="icon-wrapper">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width={this.iconSize}
+          height={this.iconSize}
+          fill={this.color}
+          transform={this.transform}
+        >
+          <g id="icon-container"></g>
+        </svg>
+
         {this.background && (
-          <span class="icon-bg" style={{ width: this.bgSize, height: this.bgSize }}></span>
+          <span></span>
         )}
-      </svg>
+
+      </div>
     );
   }
 }
