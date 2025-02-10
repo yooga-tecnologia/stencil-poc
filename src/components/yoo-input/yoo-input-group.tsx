@@ -43,7 +43,7 @@ export class YooInputGroup {
             <slot name="input" />
             {this.trailingIcon && (
               <span class="trailing-icon">
-                <slot name="actions"></slot>
+                <slot name="icon"></slot>
               </span>
             )}
           </div>
