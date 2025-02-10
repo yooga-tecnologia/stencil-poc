@@ -57,6 +57,7 @@
     border-radius: map-get(sizing.$border-radius, 'medium');
     color: map-get(primitives.$grey-palette, 600);
     transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    box-sizing: border-box;
 
     &:hover {
       border-color: #818A8F; // TODO: Não achei no tokens

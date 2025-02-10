@@ -69,7 +69,7 @@ export class IconComponent {
     this.iconSize = this.bgSize ? `${baseSize - sizeMap.small}px` : `${baseSize}px`;
   }
 
-  getTransform(iconName: string): string {
+  getTransform(iconName: string): string { // TODO: Melhorar type em vez de string para ['up', 'down', 'right', 'left']
     if (iconName.includes('-up')) {
       return 'rotate(0)'; // Nenhuma rotação necessária para cima
     } else if (iconName.includes('-down')) {
