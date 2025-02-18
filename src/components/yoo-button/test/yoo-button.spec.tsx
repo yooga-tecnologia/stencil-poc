@@ -9,7 +9,7 @@ describe('yoo-button', () => {
     });
 
     expect(page.root).toMatchSnapshot();
-    expect(page.root.querySelector("button")?.textContent).toBe("Click Me");
+    expect(page.root.querySelector('button')?.textContent).toBe('Click Me');
   });
 
   it('applies the correct classes for size, color, and variant', async () => {
@@ -18,10 +18,10 @@ describe('yoo-button', () => {
       html: `<yoo-button size="large" color="secondary" variant="outlined" label="Click Me"></yoo-button>`,
     });
 
-    const button = page.root.querySelector("button");
-    expect(button).toHaveClass("button-large");
-    expect(button).toHaveClass("button-secondary");
-    expect(button).toHaveClass("button-outlined");
+    const button = page.root.querySelector('button');
+    expect(button).toHaveClass('button-large');
+    expect(button).toHaveClass('button-secondary');
+    expect(button).toHaveClass('button-outlined');
   });
 
   it('disables the button when disabled prop is true', async () => {
@@ -30,8 +30,8 @@ describe('yoo-button', () => {
       html: `<yoo-button disabled label="Click Me"></yoo-button>`,
     });
 
-    const button = page.root.querySelector("button");
-    expect(button).toHaveAttribute("disabled");
+    const button = page.root.querySelector('button');
+    expect(button).toHaveAttribute('disabled');
   });
 
   it('applies the block class when block prop is true', async () => {
@@ -40,8 +40,8 @@ describe('yoo-button', () => {
       html: `<yoo-button block label="Click Me"></yoo-button>`,
     });
 
-    const button = page.root.querySelector("button");
-    expect(button).toHaveClass("button-block");
+    const button = page.root.querySelector('button');
+    expect(button).toHaveClass('button-block');
   });
 
   // it('renders with an icon on the left', async () => { // TODO: Ajustar teste quando for implementado o icone no button

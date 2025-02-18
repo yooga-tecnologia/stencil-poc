@@ -1,17 +1,17 @@
 export default {
-  title: "Components/InputGroup",
-  component: "yoo-input-group",
+  title: 'Components/InputGroup',
+  component: 'yoo-input-group',
   argTypes: {
-    inputName: { control: "text" },
-    label: { control: "text" },
-    placeholder: { control: "text" },
-    isRequired: { control: "boolean" },
-    condition: { control: "boolean" },
-    trailingIcon: { control: "boolean" },
+    inputName: { control: 'text' },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
+    isRequired: { control: 'boolean' },
+    condition: { control: 'boolean' },
+    trailingIcon: { control: 'boolean' },
   },
 };
 
-const Template = (args) => `
+const Template = args => `
   <div style="width: 500px">
     <yoo-input-group
       inputName="${args.inputName}"
@@ -24,16 +24,16 @@ const Template = (args) => `
     >
       <span slot="helperText">Helper Text</span>
       <input slot="input" />
-      ${args.trailingIcon ? '<span slot="actions">🔍</span>' : ""}
+      ${args.trailingIcon ? '<span slot="actions">🔍</span>' : ''}
     </yoo-input-group>
   </div>
 `;
 
 export const Default = Template.bind({});
 Default.args = {
-  inputName: "username",
-  label: "Username",
-  placeholder: "Enter your username",
+  inputName: 'username',
+  label: 'Username',
+  placeholder: 'Enter your username',
   isRequired: false,
   condition: false,
   trailingIcon: false,
