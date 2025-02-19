@@ -1,7 +1,7 @@
 {
-  "name": "@yooga/mantra",
+  "name": "@yooga-tecnologia/mantra",
   "version": "0.1.2",
-  "description": "Stencil Component Starter",
+  "description": "Biblioteca de componentes web desenvolvida com StencilJS para criar interfaces reutilizáveis e performáticas em diferentes frameworks e projetos.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -26,7 +26,10 @@
   "style": "dist/mantra/mantra.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "https://github.com/yooga-tecnologia/mantra.git"
+  },
+  "publishConfig": {
+     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
     "dist/",
