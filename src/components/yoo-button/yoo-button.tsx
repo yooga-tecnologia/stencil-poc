@@ -8,7 +8,7 @@ export type ButtonProps = {
   size: SizeVariants;
   color: ThemePalette;
   variant: ButtonStyle;
-  block: boolean;
+  fullWidth: boolean;
   disabled: boolean;
 };
 
@@ -22,7 +22,7 @@ export class YooButton {
   @Prop() size: SizeVariants = 'medium';
   @Prop() color: ThemePalette = 'primary';
   @Prop() variant: ButtonStyle = 'regular';
-  @Prop() block: boolean = false; // TODO: Adicionar no storybook / Talvez trocar nome da prop para "fullWidth"
+  @Prop() fullWidth: boolean = false;
 
   // Structure
   @Prop() label?: string | undefined = undefined;
@@ -38,9 +38,9 @@ export class YooButton {
     const variantClass = `button-${this.variant}`;
     const colorClass = `button-${this.color}`;
     const disabledClass = this.disabled ? 'button-disabled' : '';
-    const blockClass = this.block ? 'button-block' : '';
+    const fullWidthClass = this.fullWidth ? 'button-full-width' : '';
 
-    return `${blockClass} ${variantClass} ${sizeClass} ${colorClass} ${disabledClass}`;
+    return `${fullWidthClass} ${variantClass} ${sizeClass} ${colorClass} ${disabledClass}`;
   }
 
   render() {

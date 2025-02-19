@@ -34,14 +34,14 @@ describe('yoo-button', () => {
     expect(button).toHaveAttribute('disabled');
   });
 
-  it('applies the block class when block prop is true', async () => {
+  it('applies the fullWidth class when fullWidth prop is true', async () => {
     const page = await newSpecPage({
       components: [YooButton],
-      html: `<yoo-button block label="Click Me"></yoo-button>`,
+      html: `<yoo-button full-width label="Click Me"></yoo-button>`,
     });
 
     const button = page.root.querySelector('button');
-    expect(button).toHaveClass('button-block');
+    expect(button).toHaveClass('button-full-width');
   });
 
   // it('renders with an icon on the left', async () => { // TODO: Ajustar teste quando for implementado o icone no button
