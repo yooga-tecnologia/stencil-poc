@@ -1,5 +1,5 @@
 {
-  "name": "@biancardii/study",
+  "name": "@yooga/mantra",
   "version": "0.1.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
@@ -7,11 +7,11 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/study/study.esm.js",
+  "unpkg": "dist/mantra/mantra.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/study/study.esm.js",
-      "require": "./dist/study/study.cjs.js"
+      "import": "./dist/mantra/mantra.esm.js",
+      "require": "./dist/mantra/mantra.cjs.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
@@ -23,7 +23,7 @@
       "types": "./loader/index.d.ts"
     }
   },
-  "style": "dist/study/study.css",
+  "style": "dist/mantra/mantra.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
@@ -41,7 +41,8 @@
     "test.watch:e2e": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "cache-clear": "rm -rf ./node_modules ./dist/ ./.stencil/ ./storybook-static/ ./www ./loader/"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
